@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Button } from './Style/Button';
 
 const TableStyled = styled.div`
   display: flex;
@@ -24,22 +25,25 @@ const TableMainArea = styled.div`
 `;
 
 export const MainTable = () => (
-  <TableStyled>
-    <TableRowBlock>
-      <TableHeader>Наименование организации</TableHeader>
-      <TableHeader>ИНН</TableHeader>
-      <TableHeader>ОГРН</TableHeader>
-      <TableHeader>Дата регистрации</TableHeader>
-      <TableHeader>Адрес регистрации</TableHeader>
-      <TableHeader></TableHeader>
-    </TableRowBlock>
-    <TableRowBlock>
-      <TableMainArea>...</TableMainArea>
-      <TableMainArea>...</TableMainArea>
-      <TableMainArea>...</TableMainArea>
-      <TableMainArea>...</TableMainArea>
-      <TableMainArea>...</TableMainArea>
-      <TableMainArea>...</TableMainArea>
-    </TableRowBlock>
-  </TableStyled>
+  <>
+    <Button>Добавить организацию</Button>
+    <TableStyled>
+      <TableRowBlock>
+        <TableHeader>Наименование организации</TableHeader>
+        <TableHeader>ИНН</TableHeader>
+        <TableHeader>ОГРН</TableHeader>
+        <TableHeader>Дата регистрации</TableHeader>
+        <TableHeader>Адрес регистрации</TableHeader>
+        <TableHeader></TableHeader>
+      </TableRowBlock>
+      <TableRowBlock>
+        <TableMainArea>...</TableMainArea>
+        <TableMainArea>...</TableMainArea>
+        <TableMainArea>...</TableMainArea>
+        <TableMainArea>...</TableMainArea>
+        <TableMainArea>...</TableMainArea>
+        <TableMainArea>...</TableMainArea>
+      </TableRowBlock>
+    </TableStyled>
+  </>
 );
