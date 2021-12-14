@@ -1,14 +1,13 @@
 import React from 'react';
 import { GlobalStyle } from './Components/Style/GlobalStyle';
+import { MainTable } from './Components/MainTable';
 
 function App() {
   return (
-    <div>
-      <GlobalStyle/>
-      <div className="App">
-      Hello React!
-    </div>
-    </div>
+    <>
+      <GlobalStyle />
+      <MainTable />
+    </>
   );
 }
 
