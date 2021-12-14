@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const ModalButton = styled.button`
   display: block;
-  width: 200px;
+  width: 90%;
   height: 50px;
-  margin-bottom: 20px;
-  background-color: #299B01;
+  margin: 50px;
+  background-color: #1890cc;
   font-family: 'Roboto';
   font-size: 15px;
   line-height: 20px;
@@ -15,7 +15,7 @@ export const Button = styled.button`
   transition-duration: .3s;
   &:hover {
     background-color: #FFFFFF;
-    color: #299B01;
-    border-color: #299B01;
+    color: #1890cc;
+    border-color: #1890cc;
   }
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from './Style/Button';
+import { ModalButton } from './Style/ModalButton';
 
 
 const Modal = styled.div`
@@ -10,9 +10,10 @@ const Modal = styled.div`
   `;
 
 const Header = styled.h1`
-    margin: 20px;
+    margin: 30px 20px 20px;
     font-size: 20px;
     line-height: 20px;
+    text-align: center;
   `;
 
 const FormBlock = styled.div`
@@ -35,11 +36,14 @@ const Input = styled.input`
     width: 500px;
     font-size: 18px;
     border: none;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid #1890cc;
     color: gray;
   `;
 
+
 export const ModalItem = ({ isModalOpen, setModalState }) => {
+
+  console.log(isModalOpen);
 
   const Overlay = styled.div`
     position: fixed;
@@ -55,8 +59,8 @@ export const ModalItem = ({ isModalOpen, setModalState }) => {
   `;
 
   return (
-    <Overlay id='overlay' onClick={() => setModalState(false)}>
-      <Modal>
+    <Overlay onClick={() => setModalState(false)}>
+      <Modal onClickCapture={e => e.stopPropagation()}>
         <Header>Добавьте информацию о компании</Header>
         <FormBlock>
           <FormField>
@@ -65,11 +69,11 @@ export const ModalItem = ({ isModalOpen, setModalState }) => {
           </FormField>
           <FormField>
             <FormFieldName>ИНН</FormFieldName>
-            <Input type="number" name="inn" minlength="10" maxlength="10" required />
+            <Input type="number" name="inn" required />
           </FormField>
           <FormField>
             <FormFieldName>ОГРН</FormFieldName>
-            <Input type="number" name="ogrn" minlength="13" maxlength="13" required />
+            <Input type="number" name="ogrn" required />
           </FormField>
           <FormField>
             <FormFieldName>Дата регистрации</FormFieldName>
@@ -79,9 +83,8 @@ export const ModalItem = ({ isModalOpen, setModalState }) => {
             <FormFieldName>Адрес регистрации</FormFieldName>
             <Input type="text" name="address" required />
           </FormField>
-          <Button type="submit">Добавить организацию</Button>
         </FormBlock>
-
+        <ModalButton type="submit">Добавить организацию</ModalButton>
       </Modal>
     </Overlay>
   );

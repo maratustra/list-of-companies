@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from './Style/Button';
+import { MainButton } from './Style/MainButton';
+import { TableList } from './TableList';
 
 const TableStyled = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 10px;
   border: 1px solid black;
 `;
 
@@ -16,16 +18,13 @@ const TableRowBlock = styled.div`
 const TableHeader = styled.div`
   width: 500px;
   border: 1px solid black;
-`;
-
-const TableMainArea = styled.div`
-  width: 500px;
-  border: 1px solid black;
+  font-size: 15px;
+  text-align: center;
 `;
 
 export const MainTable = ({ setModalState }) => (
   <>
-    <Button onClick={() => setModalState(true)}>Добавить организацию</Button>
+    <MainButton onClick={() => setModalState(true)}>Добавить организацию</MainButton>
     <TableStyled>
       <TableRowBlock>
         <TableHeader>Наименование организации</TableHeader>
@@ -35,14 +34,9 @@ export const MainTable = ({ setModalState }) => (
         <TableHeader>Адрес регистрации</TableHeader>
         <TableHeader></TableHeader>
       </TableRowBlock>
-      <TableRowBlock>
-        <TableMainArea>...</TableMainArea>
-        <TableMainArea>...</TableMainArea>
-        <TableMainArea>...</TableMainArea>
-        <TableMainArea>...</TableMainArea>
-        <TableMainArea>...</TableMainArea>
-        <TableMainArea>...</TableMainArea>
-      </TableRowBlock>
+      <TableList />
+      <TableList />
+      <TableList />
     </TableStyled>
   </>
 );
