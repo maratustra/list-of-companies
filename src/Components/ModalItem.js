@@ -1,11 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from './Style/Button';
-//import { useOpenItem } from './Hooks/useOpenItem';
+
+
+const Modal = styled.div`
+    width: 900px;
+    height: 550px;
+    background-color: #fff;
+  `;
+
+const Header = styled.h1`
+    margin: 20px;
+    font-size: 20px;
+    line-height: 20px;
+  `;
+
+const FormBlock = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 40px 30px 20px 30px;
+  `;
+
+const FormField = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  `;
+
+const FormFieldName = styled.label`
+    font-size: 18px;
+  `;
+
+const Input = styled.input`
+    width: 500px;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px solid red;
+    color: gray;
+  `;
 
 export const ModalItem = ({ isModalOpen, setModalState }) => {
-
-  console.log(isModalOpen);
 
   const Overlay = styled.div`
     position: fixed;
@@ -18,42 +52,6 @@ export const ModalItem = ({ isModalOpen, setModalState }) => {
     height: 100%;
     background-color: rgba(0,0,0,.5);
     z-index: 20;
-  `;
-
-  const Modal = styled.div`
-    width: 900px;
-    height: 550px;
-    background-color: #fff;
-  `;
-
-  const Header = styled.h1`
-    margin: 20px;
-    font-size: 20px;
-    line-height: 20px;
-  `;
-
-  const FormBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 40px 30px 20px 30px;
-  `;
-
-  const FormField = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-  `;
-
-  const FormFieldName = styled.label`
-    font-size: 18px;
-  `;
-
-  const Input = styled.input`
-    width: 500px;
-    font-size: 18px;
-    border: none;
-    border-bottom: 1px solid red;
-    color: gray;
   `;
 
   return (
