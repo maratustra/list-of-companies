@@ -6,7 +6,6 @@ const TableStyled = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  ${'' /* max-width: 900px;  */}
 `;
 
 const TableRowBlock = styled.div`
@@ -24,9 +23,9 @@ const TableMainArea = styled.div`
   border: 1px solid black;
 `;
 
-export const MainTable = () => (
+export const MainTable = ({ setModalState }) => (
   <>
-    <Button>Добавить организацию</Button>
+    <Button onClick={() => setModalState(true)}>Добавить организацию</Button>
     <TableStyled>
       <TableRowBlock>
         <TableHeader>Наименование организации</TableHeader>

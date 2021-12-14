@@ -18,10 +18,4 @@ export const Button = styled.button`
     color: #299B01;
     border-color: #299B01;
   }
-  ${'' /* &:disabled {
-    background-color: #FFFFFF;
-    color: #aaa;
-    border-color: #aaa;
-    cursor: not-allowed;
-  } */}
 `;
