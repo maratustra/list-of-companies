@@ -33,12 +33,18 @@ export const MainTable = ({ companiesInfo, setCompaniesInfo }) => {
     setCompaniesInfo(companiesInfo => companiesInfo.filter((item, i) => index !== i));
   };
 
+  const changeCompanyField = (index, fieldName, value) => {
+    setCompaniesInfo(companiesInfo => companiesInfo.map((company, i) =>
+      ((i === index) ? { ...company, [fieldName]: value } : company)));
+  };
+
   const addCompany = company => {
     setCompaniesInfo(companiesInfo => [...companiesInfo, company]);
   };
 
   return (
     <>
+      <div>{JSON.stringify(companiesInfo)}</div>
       <AddCompanyModal addCompany={addCompany} />
 
       <TableStyled>
@@ -56,6 +62,7 @@ export const MainTable = ({ companiesInfo, setCompaniesInfo }) => {
               <TableList key={index}
                 company={company}
                 deleteCompanyRow={deleteCompanyRow}
+                changeCompanyField={changeCompanyField}
                 index={index} />
             </TableRowBlock>
           )}

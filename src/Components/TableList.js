@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import trashImage from '../image/trash.svg';
+import { InlineEdit } from './InlineEdit';
 
 const TableMainArea = styled.div`
   width: 500px;
@@ -19,9 +20,9 @@ const TrashButton = styled.button`
   background-repeat: no-repeat;
 `;
 
-export const TableList = ({ company, deleteCompanyRow, index }) => (
+export const TableList = ({ company, deleteCompanyRow, changeCompanyField, index }) => (
   <>
-    <TableMainArea>{company.name}</TableMainArea>
+    <InlineEdit value={company.name} fieldName={'name'} companyIndex={index} changeField={changeCompanyField} />
     <TableMainArea>{company.inn}</TableMainArea>
     <TableMainArea>{company.ogrn}</TableMainArea>
     <TableMainArea>{company.registration}</TableMainArea>
