@@ -24,7 +24,7 @@ const FormBlock = styled.form`
 const FormField = styled.div`
     display: flex;
     justify-content: space-between;
-    margin: 20px;
+    margin: 20px 20px 10px 20px;
   `;
 
 const FormFieldName = styled.label`
@@ -73,6 +73,7 @@ const AddNewCompanyButton = styled.button`
 `;
 
 const Error = styled.span`
+  margin-left: 20px;
   font-size: 10px;
   color: red;
 `;
@@ -184,23 +185,20 @@ export class AddCompanyModal extends React.Component {
                 <FormFieldName>Наименование организации</FormFieldName>
                 <Input type="text" value={this.state.company.name}
                   onChange={this.onFieldChange('name')} />
-                <Error>{this.state.errors.name}</Error>
               </FormField>
-
+              <Error>{this.state.errors.name}</Error>
               <FormField>
                 <FormFieldName>ИНН</FormFieldName>
                 <Input type="number" value={this.state.company.inn}
                   onChange={this.onFieldChange('inn')} />
-                <Error>{this.state.errors.inn}</Error>
               </FormField>
-
+              <Error>{this.state.errors.inn}</Error>
               <FormField>
                 <FormFieldName>ОГРН</FormFieldName>
                 <Input type="number" value={this.state.company.ogrn}
                   onChange={this.onFieldChange('ogrn')} />
-                <Error>{this.state.errors.ogrn}</Error>
               </FormField>
-
+              <Error>{this.state.errors.ogrn}</Error>
               <FormField>
                 <FormFieldName>Дата регистрации</FormFieldName>
                 <Input type="text" value={this.state.company.registrationDate}
