@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { ModalButton } from './Style/ModalButton';
 
-
 const Modal = styled.div`
     width: 900px;
     height: 550px;
@@ -41,9 +40,30 @@ const Input = styled.input`
   `;
 
 
-export const ModalItem = ({ isModalOpen, setModalState }) => {
+export const ModalItem = ({ isModalOpen, setModalState, companiesInfo, setCompaniesInfo }) => {
 
-  console.log(isModalOpen);
+  const company = {
+    name: 1,
+    inn: 2,
+    ogrn: 3,
+    registration: 4,
+    address: 5,
+  };
+
+  const addToCompaniesList = e => {
+    console.log('реагирую!');
+    //e.preventDefault();
+    console.log(e);
+
+
+    setCompaniesInfo([...companiesInfo, company]);
+
+    setModalState(false);
+  };
+
+  const closeModal = e => {
+    if (e.target.id === 'overlay') setModalState(false);
+  };
 
   const Overlay = styled.div`
     position: fixed;
@@ -59,13 +79,13 @@ export const ModalItem = ({ isModalOpen, setModalState }) => {
   `;
 
   return (
-    <Overlay onClick={() => setModalState(false)}>
-      <Modal onClickCapture={e => e.stopPropagation()}>
-        <Header>Добавьте информацию о компании</Header>
+    <Overlay id='overlay' onClick={closeModal}>
+      <Modal>
         <FormBlock>
+          <Header>Добавьте информацию о компании</Header>
           <FormField>
             <FormFieldName>Наименование организации</FormFieldName>
-            <Input type="text" name="orgName" required />
+            <Input type="text" name="orgname" required />
           </FormField>
           <FormField>
             <FormFieldName>ИНН</FormFieldName>
@@ -84,7 +104,7 @@ export const ModalItem = ({ isModalOpen, setModalState }) => {
             <Input type="text" name="address" required />
           </FormField>
         </FormBlock>
-        <ModalButton type="submit">Добавить организацию</ModalButton>
+        <ModalButton type="submit" onClick={addToCompaniesList}>Добавить организацию</ModalButton>
       </Modal>
     </Overlay>
   );

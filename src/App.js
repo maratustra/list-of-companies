@@ -3,16 +3,19 @@ import { GlobalStyle } from './Components/Style/GlobalStyle';
 import { MainTable } from './Components/MainTable';
 import { ModalItem } from './Components/ModalItem';
 import { useOpenModal } from './Components/Hooks/useOpenModal';
+import { useCompaniesInfo } from './Components/Hooks/useCompaniesInfo';
 
 function App() {
 
-  const { isModalOpen, setModalState } = useOpenModal();
+  const modal = useOpenModal();
+  const companiesInfo = useCompaniesInfo();
+  console.log(companiesInfo);
 
   return (
     <>
       <GlobalStyle />
-      <MainTable setModalState={setModalState} />
-      <ModalItem isModalOpen={isModalOpen} setModalState={setModalState} />
+      <MainTable {...modal} {...companiesInfo} />
+      <ModalItem {...modal} {...companiesInfo} />
     </>
   );
 }

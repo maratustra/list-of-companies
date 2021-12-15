@@ -8,11 +8,6 @@ const TableMainArea = styled.div`
   font-size: 12px;
 `;
 
-const TableRowBlock = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
 const TrashButton = styled.button`
   width: 24px;
   height: 24px;
@@ -24,13 +19,13 @@ const TrashButton = styled.button`
   background-repeat: no-repeat;
 `;
 
-export const TableList = () => (
-  <TableRowBlock>
-    <TableMainArea>ООО Технологии</TableMainArea>
-    <TableMainArea>1234567</TableMainArea>
-    <TableMainArea>1234567899</TableMainArea>
-    <TableMainArea>12.12.2020</TableMainArea>
-    <TableMainArea>Екатеринбург, ул. Лесная, д.6</TableMainArea>
+export const TableList = ({ company }) => (
+  <>
+    <TableMainArea>{company.name}</TableMainArea>
+    <TableMainArea>{company.inn}</TableMainArea>
+    <TableMainArea>{company.ogrn}</TableMainArea>
+    <TableMainArea>{company.registration}</TableMainArea>
+    <TableMainArea>{company.address}</TableMainArea>
     <TableMainArea><TrashButton /></TableMainArea>
-  </TableRowBlock>
+  </>
 );

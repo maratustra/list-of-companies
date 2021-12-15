@@ -22,7 +22,12 @@ const TableHeader = styled.div`
   text-align: center;
 `;
 
-export const MainTable = ({ setModalState }) => (
+const TableColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MainTable = ({ setModalState, companiesInfo }) => (
   <>
     <MainButton onClick={() => setModalState(true)}>Добавить организацию</MainButton>
     <TableStyled>
@@ -34,9 +39,14 @@ export const MainTable = ({ setModalState }) => (
         <TableHeader>Адрес регистрации</TableHeader>
         <TableHeader></TableHeader>
       </TableRowBlock>
-      <TableList />
-      <TableList />
-      <TableList />
+      <TableColumn>
+        {companiesInfo.map((company, index) =>
+          <TableRowBlock key={index}>
+            <TableList key={index}
+              company={company} />
+          </TableRowBlock>
+        )}
+      </TableColumn>
     </TableStyled>
   </>
 );
