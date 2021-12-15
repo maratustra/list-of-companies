@@ -39,6 +39,18 @@ const Input = styled.input`
     color: gray;
   `;
 
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: ${props => (props.isModalOpen ? 'flex' : 'none')};
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  z-index: 20;
+`;
 
 export const ModalItem = ({ isModalOpen, setModalState, companiesInfo, setCompaniesInfo }) => {
 
@@ -50,14 +62,8 @@ export const ModalItem = ({ isModalOpen, setModalState, companiesInfo, setCompan
     address: 5,
   };
 
-  const addToCompaniesList = e => {
-    console.log('реагирую!');
-    //e.preventDefault();
-    console.log(e);
-
-
+  const addToCompaniesList = () => {
     setCompaniesInfo([...companiesInfo, company]);
-
     setModalState(false);
   };
 
@@ -65,21 +71,10 @@ export const ModalItem = ({ isModalOpen, setModalState, companiesInfo, setCompan
     if (e.target.id === 'overlay') setModalState(false);
   };
 
-  const Overlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: ${isModalOpen ? 'flex' : 'none'};
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.5);
-    z-index: 20;
-  `;
+  const setCompanyInn = inn => company.inn = inn;
 
   return (
-    <Overlay id='overlay' onClick={closeModal}>
+    <Overlay isModalOpen={isModalOpen} id='overlay' onClick={closeModal}>
       <Modal>
         <FormBlock>
           <Header>Добавьте информацию о компании</Header>
@@ -89,7 +84,7 @@ export const ModalItem = ({ isModalOpen, setModalState, companiesInfo, setCompan
           </FormField>
           <FormField>
             <FormFieldName>ИНН</FormFieldName>
-            <Input type="number" name="inn" required />
+            <Input type="number" value={company.inn} onChange={inn => setCompanyInn(inn)} required />
           </FormField>
           <FormField>
             <FormFieldName>ОГРН</FormFieldName>

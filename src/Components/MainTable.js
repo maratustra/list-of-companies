@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MainButton } from './Style/MainButton';
+import { AddCompanyModal } from './AddCompanyModal';
 import { TableList } from './TableList';
 
 const TableStyled = styled.div`
@@ -27,26 +27,40 @@ const TableColumn = styled.div`
   flex-direction: column;
 `;
 
-export const MainTable = ({ setModalState, companiesInfo }) => (
-  <>
-    <MainButton onClick={() => setModalState(true)}>Добавить организацию</MainButton>
-    <TableStyled>
-      <TableRowBlock>
-        <TableHeader>Наименование организации</TableHeader>
-        <TableHeader>ИНН</TableHeader>
-        <TableHeader>ОГРН</TableHeader>
-        <TableHeader>Дата регистрации</TableHeader>
-        <TableHeader>Адрес регистрации</TableHeader>
-        <TableHeader></TableHeader>
-      </TableRowBlock>
-      <TableColumn>
-        {companiesInfo.map((company, index) =>
-          <TableRowBlock key={index}>
-            <TableList key={index}
-              company={company} />
-          </TableRowBlock>
-        )}
-      </TableColumn>
-    </TableStyled>
-  </>
-);
+export const MainTable = ({ companiesInfo, setCompaniesInfo }) => {
+
+  const deleteCompanyRow = index => {
+    setCompaniesInfo(companiesInfo => companiesInfo.filter((item, i) => index !== i));
+  };
+
+  const addCompany = company => {
+    setCompaniesInfo(companiesInfo => [...companiesInfo, company]);
+  };
+
+  return (
+    <>
+      <AddCompanyModal addCompany={addCompany} />
+
+      <TableStyled>
+        <TableRowBlock>
+          <TableHeader>Наименование организации</TableHeader>
+          <TableHeader>ИНН</TableHeader>
+          <TableHeader>ОГРН</TableHeader>
+          <TableHeader>Дата регистрации</TableHeader>
+          <TableHeader>Адрес регистрации</TableHeader>
+          <TableHeader></TableHeader>
+        </TableRowBlock>
+        <TableColumn>
+          {companiesInfo.map((company, index) =>
+            <TableRowBlock key={index}>
+              <TableList key={index}
+                company={company}
+                deleteCompanyRow={deleteCompanyRow}
+                index={index} />
+            </TableRowBlock>
+          )}
+        </TableColumn>
+      </TableStyled>
+    </>
+  );
+};

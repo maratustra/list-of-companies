@@ -19,13 +19,13 @@ const TrashButton = styled.button`
   background-repeat: no-repeat;
 `;
 
-export const TableList = ({ company }) => (
+export const TableList = ({ company, deleteCompanyRow, index }) => (
   <>
     <TableMainArea>{company.name}</TableMainArea>
     <TableMainArea>{company.inn}</TableMainArea>
     <TableMainArea>{company.ogrn}</TableMainArea>
     <TableMainArea>{company.registration}</TableMainArea>
     <TableMainArea>{company.address}</TableMainArea>
-    <TableMainArea><TrashButton /></TableMainArea>
+    <TableMainArea><TrashButton onClick={() => deleteCompanyRow(index)} /></TableMainArea>
   </>
 );
