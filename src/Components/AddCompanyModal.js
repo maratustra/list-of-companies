@@ -72,6 +72,8 @@ const AddNewCompanyButton = styled.button`
   }
 `;
 
+
+
 const Error = styled.span`
   margin-left: 20px;
   font-size: 10px;
