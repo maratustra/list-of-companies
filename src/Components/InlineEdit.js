@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Input = styled.input`
-  background-color: transparent;
-  border: 0;
-  padding: 8px;
+  font-size: 12px;
+  width: 490px;
   &:hover {
     background-color: #d3d3d3;
     cursor: pointer;

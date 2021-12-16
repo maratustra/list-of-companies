@@ -125,9 +125,6 @@ export class AddCompanyModal extends React.Component {
 
     if (this.isValid()) {
       this.addToCompaniesList();
-      console.log('true');
-    } else {
-      console.log('false');
     }
   }
 
@@ -157,9 +154,17 @@ export class AddCompanyModal extends React.Component {
       if (/[^\d]/g.test(input.inn)) {
         isValid = false;
         errors["inn"] = "Пожалуйста, проверьте правильность введеного ИНН";
+      } else if (input.inn.length !== 10) {
+        isValid = false;
+        errors["inn"] = 'ИНН должен состоять из 10 цифр';
+        (this.setState(state => ({ company: { ...state.company, inn: "" } })));
       } else if (/[^\d]/g.test(input.ogrn)) {
         isValid = false;
         errors["ogrn"] = "Пожалуйста, проверьте правильность введеного ОГРН";
+      } else if (input.ogrn.length !== 13) {
+        isValid = false;
+        errors["ogrn"] = 'ОГРН должен состоять из 13 цифр';
+        (this.setState(state => ({ company: { ...state.company, ogrn: "" } })));
       }
     }
 
@@ -170,8 +175,6 @@ export class AddCompanyModal extends React.Component {
 
 
   render() {
-
-    console.log(this.state.errors);
 
     return (
       <>
@@ -201,7 +204,7 @@ export class AddCompanyModal extends React.Component {
               <Error>{this.state.errors.ogrn}</Error>
               <FormField>
                 <FormFieldName>Дата регистрации</FormFieldName>
-                <Input type="text" value={this.state.company.registrationDate}
+                <Input type="date" value={this.state.company.registrationDate}
                   onChange={this.onFieldChange('registrationDate')} />
               </FormField>
               <FormField>

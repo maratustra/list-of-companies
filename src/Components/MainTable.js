@@ -44,7 +44,6 @@ export const MainTable = ({ companiesInfo, setCompaniesInfo }) => {
 
   return (
     <>
-      <div>{JSON.stringify(companiesInfo)}</div>
       <AddCompanyModal addCompany={addCompany} />
 
       <TableStyled>

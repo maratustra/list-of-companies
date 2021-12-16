@@ -12,6 +12,7 @@ const TableMainArea = styled.div`
 const TrashButton = styled.button`
   width: 24px;
   height: 24px;
+  margin-left: 40%;
   border-color: transparent;
   background-color: transparent;
   background-image: url(${trashImage});
@@ -23,10 +24,11 @@ const TrashButton = styled.button`
 export const TableList = ({ company, deleteCompanyRow, changeCompanyField, index }) => (
   <>
     <InlineEdit value={company.name} fieldName={'name'} companyIndex={index} changeField={changeCompanyField} />
-    <TableMainArea>{company.inn}</TableMainArea>
-    <TableMainArea>{company.ogrn}</TableMainArea>
-    <TableMainArea>{company.registration}</TableMainArea>
-    <TableMainArea>{company.address}</TableMainArea>
+    <InlineEdit value={company.inn} fieldName={'inn'} companyIndex={index} changeField={changeCompanyField} />
+    <InlineEdit value={company.ogrn} fieldName={'orgn'} companyIndex={index} changeField={changeCompanyField} />
+    <InlineEdit value={company.registrationDate} fieldName={'registration'}
+      companyIndex={index} changeField={changeCompanyField} />
+    <InlineEdit value={company.address} fieldName={'address'} companyIndex={index} changeField={changeCompanyField} />
     <TableMainArea><TrashButton onClick={() => deleteCompanyRow(index)} /></TableMainArea>
   </>
 );
